@@ -6,6 +6,7 @@ Vue.use(Router)
 import EventPage from '../components/pages/event'
 import MainPage from '../components/pages/main'
 import AddNew from '../components/pages/new'
+import AboutPage from '../components/pages/about'
 
 export default new Router({
   mode: 'history',
@@ -15,6 +16,12 @@ export default new Router({
       path: '/new',
       name: 'new',
       component: AddNew
+    },
+
+    {
+      path: '/about',
+      name: 'about',
+      component: AboutPage
     },
 
     {
