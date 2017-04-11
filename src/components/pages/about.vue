@@ -12,7 +12,7 @@
 
         <label>Пишите нам</label>
 
-        <form action="">
+        <form class="wrapper" action="">
 
           <div class="subject">
             <input v-model="subject" type="radio" name="subject" id='idea' value="idea">
@@ -27,18 +27,14 @@
           </div>
 
           <div>
-              <input v-model="name" type="text" required :placeholder="pname"/>
+              <textarea class="message" v-model="message" rows="8" type="text" required :placeholder="pmessage"/>
           </div>
 
-          <div>
+          <div class="footer">
               <input v-model="email" type="text" required :placeholder="pemail"/>
+              <input type="submit" value="Отправить">
           </div>
 
-          <div>
-              <textarea class="message" v-model="message" rows="10" type="text" required :placeholder="pmessage"/>
-          </div>
-
-          <input type="submit" value="Отправить">
         </form>
       </div>
     </div>
@@ -55,11 +51,9 @@
       }
     },
     data: () => ({
-      name: '',
       email: '',
       message: '',
       subject: 'idea',
-      pname: 'Ваше имя',
       pemail: 'someone@example.com',
       pmessage: 'Я хочу предложить/пожаловаться/помочь/обратить внимание и тд'
     })
@@ -81,8 +75,17 @@
 
   input[type="radio"]{display: none;}
 
-  input[type="radio"]:checked+.type{
-    background-color: #e8bfe6;
+  input[type="radio"]:checked+.type {
+    border: 1px solid #ade6b5;
+    box-shadow: 0 0 3px 2px #ade6b5;
+  }
+
+  .footer{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 7em;
+    align-items: center
   }
 
 
@@ -91,32 +94,37 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    margin: 1em;
+    margin: 1em 0;
   }
 
   .type{
+    box-sizing: content-box;
     padding: 0.5em;
     border: 1px solid black;
-    border-radius: 5px;
     cursor: pointer;
     font-family: 'Roboto Slab', serif;
     font-size: 0.9em;
+    font-weight: 300;
   }
 
   .type:hover{
-    background: #e0cfdf;
+    /*background: #e0cfdf;*/
   }
 
   label{
     font-size: 1.5em;
     font-family: 'Roboto Slab', serif;
+    font-weight: 300;
   }
 
   input[type=submit]{
     float: right;
-    /*width: 10vw;*/
     font-size: 1em;
     font-family: 'Roboto Slab', serif;
+    font-weight: 300;
+    border: 1px solid black;
+    background-color: #ade6b5;
+    cursor: pointer;
   }
 
   input[type=text], textarea {
@@ -125,12 +133,12 @@
     font-family: monospace;
     padding: 0.2em 0.4em;
     line-height: 1.4em;
-    margin: 1em 0;
+    margin: 0.5em 0;
     resize: none;
     font-size: 1em;
     font-family: 'Roboto Slab', serif;
-    border-radius:5px;
-    border-width: 0
+    font-weight: 300;
+    border: 1px solid black;
   }
 
   .layout{
@@ -153,9 +161,9 @@
       /*min-width: 550px;*/
       /*height: 450px;*/
       padding:10px;
-      background-color: #c5c5c5;
-      border-radius:5px;
+      background-color: white;
       box-shadow: 0px 0px 10px #000;
+      border-top: 6px solid #ade6b5;
   }
 
   .page {
